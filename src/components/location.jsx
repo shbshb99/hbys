@@ -99,27 +99,39 @@ const Location = () => {
       </Divider>
       <Image src={Flower} />
       <Map
-        id="daumRoughmapContainer1652464367301"
+        id="daumRoughmapContainer1753177339390"
         className="root_daum_roughmap root_daum_roughmap_landing"
       ></Map>
-      <Content>
-        대구 수성구 두산동 888-2번지
+	  <Content>
+        서울 강동구 천호대로 1102
         <br />
-        호텔수성 수성스퀘어 3층 피오니홀
+         KDW웨딩홀 2층 마이더스홀
         <br />
         <br />
         <Title>버스 이용시</Title>
         <br />
         <br />
-        410-1, 401 호텔수성 앞 하차
+        간선버스 : 130, 341, 342, 370
         <br />
-        수성1-1, 수성3-1, 814 TBC방송국 앞 하차
+        지선버스 : 3214, 3316
+        <br />
+        직행버스 : 1113, 1113-1
+        <br />
+        일반버스 : 1-4, 23, 30-3, 112-1, 112-5
         <br />
         <br />
         <Title>지하철 이용시</Title>
         <br />
         <br />
-        3호선 수성못역 하차 (도보 10분)
+        5호선 강동역 하차 3번출구 바로 앞
+        <br />
+        <br />
+        <Title>자가용 이용시</Title>
+        <br />
+        <br />
+        주차장 안내 : 건물 내 (지하 1층 ~ 지하 3층)
+        <br />
+        옥외 주차장 및 지하철 환승 주차장 이용
       </Content>
     </Wrapper>
   );
