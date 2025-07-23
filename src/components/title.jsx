@@ -8,6 +8,7 @@ import {
 } from "../../config.js";
 import BackgroundVideo from "../assets/BackgroundVideo.mp4";
 import GroovePaper from "../assets/GroovePaper.png";
+import Backgroundphoto from "../assets/Backgroundphoto.png";
 
 const Layout = styled.div`
   width: 70%;
@@ -49,6 +50,18 @@ const Schedule = styled.p`
   opacity: 0.65;
   margin-bottom: 24px;
 `;
+
+const ImageBackground = styled.img`
+ width : 100%;
+ height: 100%;
+ object-fit: cover;
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: -1;
+
+`;
+
 const Title = () => {
   return (
     <Layout>
@@ -63,9 +76,7 @@ const Title = () => {
           {WEDDING_LOCATION}
         </Schedule>
       </TitleWrapper>
-      <VideoBackground autoPlay loop muted playsInline={true}>
-        <source src={BackgroundVideo} type="video/mp4" />
-      </VideoBackground>
+	  <ImageBackground src={Backgroundphoto} alt="Background Photo" />
     </Layout>
   );
 };
