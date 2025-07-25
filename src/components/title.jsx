@@ -6,7 +6,6 @@ import {
   GROOM_NAME,
   BRIDE_NAME,
 } from "../../config.js";
-// BackgroundVideo는 이 파일에서 사용되지 않으므로 제거했습니다.
 import GroovePaper from "../assets/GroovePaper.png"; // GroovePaper 임포트 유지
 import Backgroundphoto from "../assets/Backgroundphoto.jpg"; // 배경 사진 임포트
 
@@ -15,7 +14,7 @@ import Backgroundphoto from "../assets/Backgroundphoto.jpg"; // 배경 사진 �
 // 전체 레이아웃 컨테이너
 // 사진이 배경으로 전체를 채우도록 설정합니다.
 const Layout = styled.div`
-  position: relative; /* ImageBackground가 absolute로 위치할 기준점 */
+  position: relative;
   width: 100%;
   height: 100vh; /* 화면 전체 높이를 차지하도록 (뷰포트 높이 100%) */
   overflow: hidden; /* 내용이 넘치면 숨김 */

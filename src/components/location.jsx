@@ -1,5 +1,5 @@
-import React, { useEffect, useCallback } from "react";
-import { Divider,Button ,message  } from "antd";
+import React, { useEffect, useRef, useCallback } from "react"; // useRef 추가
+import { Divider, Button, message } from "antd";
 import styled from "styled-components";
 import Flower from "../assets/flower2.png";
 import CopyToClipboard from "react-copy-to-clipboard";
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column; /* 자식 요소들을 세로로 정렬 */
   align-items: center; /* 가운데 정렬 (width: 95%인 상태에서 내부 콘텐츠 정렬) */
-  box-sizing: border-box; /* ✨ padding이 height 계산에 포함되도록 */
+  box-sizing: border-box; /* padding이 height 계산에 포함되도록 */
 `;
 
 const Title = styled.span`
@@ -30,10 +30,10 @@ const Image = styled.img`
   margin: 0 auto;
   width: 1.375rem;
   padding-bottom: 15px;
-  flex-shrink: 0; /* ✨ 이미지는 줄어들지 않도록 */
+  flex-shrink: 0; /* 이미지는 줄어들지 않도록 */
 `;
 
-// Content: 스크롤될 실제 내용
+// Content: 스크롤될 실제 내용 (이 영역은 FullPage 스크롤과 연동)
 const Content = styled.p`
   font-size: 0.875rem;
   line-height: 1.75;
@@ -44,10 +44,10 @@ const Content = styled.p`
   padding-bottom: 10px;
   margin: 0;
 
-  flex-grow: 1; /* ✨ 남은 공간을 모두 차지하도록 설정 */
-  overflow-y: auto; /* ✨ 이 영역만 스크롤되도록 */
+  flex-grow: 1; /* 남은 공간을 모두 차지하도록 설정 */
+  overflow-y: auto; /* 이 영역에 스크롤바가 생기도록 (PC 휠 스크롤용) */
   -webkit-overflow-scrolling: touch; /* iOS에서 부드러운 스크롤 */
-  box-sizing: border-box; /* 패딩 포함 너비 계산 */
+  box-sizing: border-box;
 `;
 
 const Map = styled.div`
@@ -55,7 +55,8 @@ const Map = styled.div`
   padding: 0;
   height: 360px; /* 지도 렌더링을 위한 고정 높이 */
   position: relative;
-  flex-shrink: 0; /* ✨ 지도는 줄어들지 않도록 */
+  flex-shrink: 0; /* 지도는 줄어들지 않도록 */
+  overflow: hidden; /* 지도 컨테이너 자체의 불필요한 스크롤바 방지 */
 `;
 
 const MapOverlayButton = styled.a`
@@ -89,6 +90,8 @@ const Location = () => {
   const MAP_TIMESTAMP = "1753177339390";
   const MAP_KEY = "5ouqucras9i";
   const MAP_DESTINATION_ADDRESS = "서울 강동구 천호대로 1102"; 
+
+  const mapRef = useRef(null); // 지도 DOM 요소를 참조하기 위한 ref 추가
 
   const handleCopySuccess = () => {
     message.success("주소가 복사되었습니다.");
@@ -138,6 +141,34 @@ const Location = () => {
 
   useEffect(() => {
     InstallScript();
+
+    const mapElement = mapRef.current; // 지도 DOM 요소 참조
+    if (mapElement) {
+      // ✨ 지도 영역 내에서 발생하는 모든 이벤트의 전파를 막습니다. ✨
+      // 이렇게 하면 FullPage가 이 영역 내의 스크롤/터치/클릭에 반응하지 않게 됩니다.
+      // 지도의 기능(드래그, 확대/축소 등)은 카카오맵 자체적으로 처리하려 시도합니다.
+      // 하지만 roughmap의 한계로 지도 드래그/스크롤이 안 될 수 있습니다.
+
+      const preventFullPageScroll = (e) => {
+        // e.stopPropagation()만 사용하고 e.preventDefault()는 사용하지 않습니다.
+        // e.preventDefault()를 사용하면 지도 자체의 스크롤/드래그가 막힙니다.
+        e.stopPropagation(); 
+      };
+
+      // 마우스/터치 다운 이벤트 (클릭/드래그 시작 시)
+      mapElement.addEventListener('pointerdown', preventFullPageScroll, { passive: false });
+      // 마우스 휠 이벤트 (확대/축소 시도)
+      mapElement.addEventListener('wheel', preventFullPageScroll, { passive: false });
+      // 터치 이동 이벤트 (드래그/핀치 줌 시도)
+      mapElement.addEventListener('touchmove', preventFullPageScroll, { passive: false });
+      
+      // 컴포넌트 언마운트 시 이벤트 리스너 제거
+      return () => {
+        mapElement.removeEventListener('pointerdown', preventFullPageScroll);
+        mapElement.removeEventListener('wheel', preventFullPageScroll);
+        mapElement.removeEventListener('touchmove', preventFullPageScroll);
+      };
+    }
   }, [InstallScript]);
 
   const createKakaoMapLink = () => {
@@ -152,6 +183,7 @@ const Location = () => {
       </Divider>
       <Image src={Flower} />
       <Map
+        ref={mapRef} // ✨ Map styled-component에 ref 연결 ✨
         id={MAP_CONTAINER_ID}
         className="root_daum_roughmap root_daum_roughmap_landing"
       >
