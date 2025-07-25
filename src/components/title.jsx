@@ -29,10 +29,6 @@ const TitleWrapper = styled.div`
   width: 100%;
   text-align: center;
   padding-top: 15%;
-  animation: fadein 3s; /* 기존 애니메이션 유지 */
-  -moz-animation: fadein 3s; /* Firefox */
-  -webkit-animation: fadein 3s; /* Safari and Chrome */
-  -o-animation: fadein 3s; /* Opera */
   position: relative; /* 텍스트가 배경 이미지 위에 오도록 */
   z-index: 1; /* 배경 이미지보다 위에 렌더링 */
   /* 배경 사진 위에 글자가 더 잘 보이도록 글자색과 그림자 조정 */
