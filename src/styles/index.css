@@ -7,6 +7,11 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 } */
 
+body {
+  background: #efebe9;
+  background-image: url("../assets/GroovePaper.png");
+}
+
 /* 카카오맵 버튼 없애기 */
 .wrap_controllers {
   display: none !important;
@@ -19,9 +24,9 @@
 .root_daum_roughmap_landing {
   margin: auto !important;
 }
-.root_daum_roughmap .wrap_btn_zoom {
+/* .root_daum_roughmap .wrap_btn_zoom {
   display: none !important;
-}
+} */
 
 @font-face {
   font-family: "Ephesis-Regular";

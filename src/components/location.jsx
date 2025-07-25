@@ -62,7 +62,7 @@ const Map = styled.div`
 const MapOverlayButton = styled.a`
   position: absolute;
   bottom: 5px;
-  right: 5px;
+  left: 5px;
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.7);
   color: white !important;

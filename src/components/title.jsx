@@ -16,8 +16,7 @@ import Backgroundphoto from "../assets/Backgroundphoto.jpg"; // 배경 사진 �
 const Layout = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh; /* 화면 전체 높이를 차지하도록 (뷰포트 높이 100%) */
-  overflow: hidden; /* 내용이 넘치면 숨김 */
+  height: 100%; 
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -20,7 +20,7 @@ import GalleryPhoto14 from "../assets/14.jpg";
 
 const Wrapper = styled.div`
   padding-top: 42px;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
 `;
 
@@ -132,7 +132,7 @@ const Gallery = () => {
         showFullscreenButton={true}
         autoPlay={true}
         items={images}
-      />
+        />
     </Wrapper>
   );
 };

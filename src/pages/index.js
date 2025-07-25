@@ -26,7 +26,6 @@ const { Footer } = Layout;
 const Wrapper = styled.div`
   background: #efebe9;
   background-image: url(${GroovePaper});
-  width: 100%;
 `;
 
 const IndexPage = () => {
@@ -47,30 +46,28 @@ const IndexPage = () => {
     });
   });
   return (
-    
-    <FullPage>
-      <audio autoPlay loop>
-        <source src={Song} />
-      </audio>
-       <Slide>
-      <Title />
-       </Slide>
-       <Slide>
-      <Greeting />
-      <Quote />
-       </Slide>
-       <Slide>
-      <Gallery />
-       </Slide>
-       <Slide>
-      <Location />
-       </Slide>
-       <Slide>
-      <CongratulatoryMoney />
-      <Share />
-       </Slide>
-      
-    </FullPage>
+  <FullPage>
+    <audio autoPlay loop>
+      <source src={Song} />
+    </audio>
+      <Slide>
+        <Title />
+      </Slide>
+      <Slide>
+        <Greeting />
+        <Quote />
+      </Slide>
+      <Slide>
+        <Gallery />
+      </Slide>
+      <Slide>
+        <Location />
+      </Slide>
+      <Slide>
+        <CongratulatoryMoney />
+        <Share />
+      </Slide>
+  </FullPage>
   );
 };
 
