@@ -14,7 +14,7 @@ import Flower from "../assets/flower1.png";
 const Wrapper = styled.div`
   padding-top: 42px;
   margin: 0 auto;
-  width: 70%;
+  width: 95%;
 `;
 
 const Title = styled.p`
@@ -56,10 +56,9 @@ const Image = styled.img`
 const Greeting = () => {
   return (
     <Wrapper>
-      <Divider style={{ marginTop: 32, marginBottom: 32 }} plain>
+      <Divider style={{ marginTop: 10, marginBottom: 10 }} plain>
         <Title data-aos="fade-up">초대합니다</Title>
       </Divider>
-      <Image data-aos="fade-up" src={Flower} />
       <Content data-aos="fade-up">
         서로 마주 보며 다져온 사랑을
         <br />

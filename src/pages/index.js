@@ -18,6 +18,8 @@ import Song from "../assets/song.mp3";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import { FullPage, Slide } from 'react-full-page';;
+
 // markup
 const { Footer } = Layout;
 
@@ -45,28 +47,30 @@ const IndexPage = () => {
     });
   });
   return (
-    <Wrapper>
+    
+    <FullPage>
       <audio autoPlay loop>
         <source src={Song} />
       </audio>
+       <Slide>
       <Title />
+       </Slide>
+       <Slide>
       <Greeting />
-      <Gallery />
-      <Location />
       <Quote />
+       </Slide>
+       <Slide>
+      <Gallery />
+       </Slide>
+       <Slide>
+      <Location />
+       </Slide>
+       <Slide>
       <CongratulatoryMoney />
       <Share />
-      <Footer
-        style={{
-          background: "#D7CCC8",
-          backgroundImage: `url(${GroovePaper})`,
-          opacity: 0.6,
-          textAlign: "center",
-        }}
-      >
-        Copyright © 2025 SHIN HYOEONBEOM
-      </Footer>
-    </Wrapper>
+       </Slide>
+      
+    </FullPage>
   );
 };
 

@@ -13,7 +13,7 @@ import {
 } from "../../config";
 
 const Wrapper = styled.div`
-  padding-top: 42px;
+  padding-top: 10px;
   width: 100%;
   text-align: center;
 `;
@@ -102,9 +102,8 @@ const Share = () => {
   return (
     <Wrapper>
       <Divider
-        data-aos="fade-up"
         plain
-        style={{ marginTop: 0, marginBottom: 32 }}
+        style={{ marginTop: 0, marginBottom: 10 }}
       >
         <Title>청첩장 공유하기</Title>
       </Divider>

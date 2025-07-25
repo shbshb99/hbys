@@ -4,9 +4,9 @@ import QuotePaper from "../assets/Quote.png";
 import Flower from "../assets/flower1.png";
 
 const Wrapper = styled.div`
-  padding-top: 42px;
-  padding-left: 42px;
-  padding-right: 42px;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   width: 100%;
   overflow: hidden;
   margin: 0 auto;
@@ -31,7 +31,7 @@ const Image = styled.img`
   display: block;
   margin: 0 auto;
   width: 1.375rem;
-  padding-bottom: 42px;
+  padding-bottom: 15px;
 `;
 
 const Quote = () => {
