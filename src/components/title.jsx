@@ -8,7 +8,7 @@ import {
 } from "../../config.js";
 // BackgroundVideo는 이 파일에서 사용되지 않으므로 제거했습니다.
 import GroovePaper from "../assets/GroovePaper.png"; // GroovePaper 임포트 유지
-import Backgroundphoto from "../assets/Backgroundphoto.png"; // 배경 사진 임포트
+import Backgroundphoto from "../assets/Backgroundphoto.jpg"; // 배경 사진 임포트
 
 // --- Styled-components 정의 ---
 
@@ -22,17 +22,13 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* 텍스트 콘텐츠를 수직/수평 중앙에 배치 */
-  /* background-color: #f0f0f0;  배경 이미지가 로드되기 전을 위한 기본색 (필요시 사용) */
 `;
 
 // 타이틀 텍스트를 감싸는 래퍼
 const TitleWrapper = styled.div`
   width: 100%;
   text-align: center;
-  padding-top: 42px;
-  font-weight: 500 !important;
-  color: var(--title-color); /* 기존 색상 변수 사용 */
+  padding-top: 15%;
   animation: fadein 3s; /* 기존 애니메이션 유지 */
   -moz-animation: fadein 3s; /* Firefox */
   -webkit-animation: fadein 3s; /* Safari and Chrome */
@@ -41,7 +37,6 @@ const TitleWrapper = styled.div`
   z-index: 1; /* 배경 이미지보다 위에 렌더링 */
   /* 배경 사진 위에 글자가 더 잘 보이도록 글자색과 그림자 조정 */
   color: white; /* 텍스트 색상을 흰색으로 변경 */
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* 그림자를 더 진하게 하여 가독성 높임 */
 `;
 
 // 배경 이미지 컴포넌트
@@ -52,7 +47,7 @@ const ImageBackground = styled.img`
   position: absolute; /* Layout 내에서 절대 위치 */
   top: 0;
   left: 0;
-  z-index: -1; /* 다른 콘텐츠 뒤로 보내기 */
+  z-index: 0; /* 다른 콘텐츠 뒤로 보내기 */
 `;
 
 // 기존 폰트 사이즈 및 opacity 유지 (사용자님 제공 코드)
@@ -63,16 +58,36 @@ const WeddingInvitation = styled.p`
 `;
 
 const GroomBride = styled.p`
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 0.9rem;
   opacity: 0.9;
   margin-bottom: 16px;
+  font-weight: 600;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0,0.7); /* 그림자를 더 진하게 하여 가독성 높임 */
 `;
 
 const Schedule = styled.p`
-  font-size: 1.06rem;
-  opacity: 0.65;
-  margin-bottom: 24px;
+  font-size: 1.rem;
+  color: white; /* 텍스트 색상을 흰색으로 변경 */
+  text-align: center;
+  position: absolute; /* Layout을 기준으로 절대 위치 지정 */
+  bottom: 5%; /* 하단에서 50px 위로 배치 */
+  width: 100%; /* 너비를 100%로 설정하여 가운데 정렬 유지 */
+  z-index: 1; /* 다른 콘텐츠 위에 오도록 설정 */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* 그림자를 더 진하게 하여 가독성 높임 */
+  font-weight: 600;
+`;
+
+const CenterText = styled.p`
+  font-size: 3rem;
+  color: white; /* 텍스트 색상을 흰색으로 변경 */
+  text-align: center;
+  position: absolute; /* Layout을 기준으로 절대 위치 지정 */
+  bottom: 20%; /* 하단에서 50px 위로 배치 */
+  width: 100%; /* 너비를 100%로 설정하여 가운데 정렬 유지 */
+  z-index: 1; /* 다른 콘텐츠 위에 오도록 설정 */
+  font-family: "Ephesis-Regular";
+  font-weight: 500;
+  // text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* 그림자를 더 진하게 하여 가독성 높임 */
 `;
 
 // --- Title 컴포넌트 ---
@@ -80,17 +95,18 @@ const Title = () => {
   return (
     <Layout>
       <TitleWrapper>
-        <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
         <GroomBride>
           {GROOM_NAME} &#38; {BRIDE_NAME}
         </GroomBride>
+      </TitleWrapper>
+      <ImageBackground src={Backgroundphoto} alt="Background Photo" />
+      <CenterText>
+        We are getting married!
+      </CenterText>
         <Schedule>
           {WEDDING_DATE} <br />
           {WEDDING_LOCATION}
         </Schedule>
-      </TitleWrapper>
-      {/* Backgroundphoto.png 파일을 src로 사용하여 배경 이미지 렌더링 */}
-      <ImageBackground src={Backgroundphoto} alt="Background Photo" />
     </Layout>
   );
 };

@@ -36,12 +36,14 @@ const Content = styled.p`
 `;
 
 const GroomBride = styled.p`
-  font-size: 0.875rem;
+  font-size: 0.78rem;
   line-height: 1.75;
   opacity: 0.85;
+  margin-top: 30px;
   margin-bottom: 0px;
   width: 100%;
   text-align: center;
+  font-weight: 600;
 `;
 
 const Image = styled.img`

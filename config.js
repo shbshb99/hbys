@@ -3,8 +3,8 @@ export const KAKAOTALK_API_TOKEN = "JavaScript 키 입력";
 export const KAKAOTALK_SHARE_IMAGE =
   "https://cdn.pixabay.com/photo/2014/11/13/17/04/heart-529607_960_720.jpg";
 
-export const WEDDING_DATE = "2025년 8월 31일 일요일, 오후 1시 40분";
-export const WEDDING_LOCATION = "KDW웨딩홀 2층 마이더스 홀";
+export const WEDDING_DATE = "2025.8.31";
+export const WEDDING_LOCATION = "SUN 13:40";
 
 export const GROOM_NAME = "신현범";
 export const GROOM_ACCOUNT_NUMBER = "새마을금고 9003-2177-3837-3";
