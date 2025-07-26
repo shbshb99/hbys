@@ -4,6 +4,11 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const LoaderWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,16 +24,16 @@ const ContentWrapper = styled.div`
 `;
 
 const LoadingText = styled.p`
-  margin-top: 24px; /* 스피너와의 간격 */
+  margin-top: 24px;
   font-size: 1rem;
-  color: #888; /* 너무 튀지 않는 부드러운 회색 */
+  color: #5d5d5d;
 `;
 
 const customIcon = (
   <LoadingOutlined
     style={{
       fontSize: 48,
-      color: "#F4C2C2", 
+      color: "#F4C2C2",
     }}
     spin
   />

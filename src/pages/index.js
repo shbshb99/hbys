@@ -55,14 +55,11 @@ const IndexPage = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  return (
+   return (
     <>
       {isLoading && <LoadingScreen />}
-
-      <FullPage style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
-        <audio autoPlay loop>
-          <source src={Song} />
-        </audio>
+      <audio src={Song} autoPlay loop style={{ display: "none" }} />
+      <FullPage>
         <Slide>
           <Title />
         </Slide>
