@@ -130,7 +130,7 @@ const Gallery = () => {
         ref={imageGalleryRef}
         showPlayButton={false}
         showFullscreenButton={true}
-        autoPlay={true}
+        autoPlay={false}
         items={images}
         />
     </Wrapper>
