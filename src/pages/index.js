@@ -50,38 +50,38 @@ const IndexPage = () => {
     
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); // 5초 후에 로딩 화면을 숨깁니다. (시간은 조절 가능)
+    }, 3000); // 5초 후에 로딩 화면을 숨깁니다. (시간은 조절 가능)
 
     return () => clearTimeout(timer);
   }, []);
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
   
   return (
-    <FullPage>
-      <audio autoPlay loop>
-        <source src={Song} />
-      </audio>
-      <Slide>
-        <Title />
-      </Slide>
-      <Slide>
-        <Greeting />
-        <Quote />
-      </Slide>
-      <Slide>
-        <Gallery />
-      </Slide>
-      <Slide>
-        <Location />
-      </Slide>
-      <Slide>
-        <CongratulatoryMoney />
-        <Share />
-      </Slide>
-    </FullPage>
+    <>
+      {isLoading && <LoadingScreen />}
+
+      <FullPage style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
+        <audio autoPlay loop>
+          <source src={Song} />
+        </audio>
+        <Slide>
+          <Title />
+        </Slide>
+        <Slide>
+          <Greeting />
+          <Quote />
+        </Slide>
+        <Slide>
+          <Gallery />
+        </Slide>
+        <Slide>
+          <Location />
+        </Slide>
+        <Slide>
+          <CongratulatoryMoney />
+          <Share />
+        </Slide>
+      </FullPage>
+    </>
   );
 };
 
